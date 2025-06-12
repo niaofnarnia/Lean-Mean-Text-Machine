@@ -2,7 +2,9 @@ package com.FemCoders.Lean.Mean.Text.Machine.Controller;
 
 import com.FemCoders.Lean.Mean.Text.Machine.Model.Phrase;
 import com.FemCoders.Lean.Mean.Text.Machine.service.PhraseService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
@@ -20,10 +22,13 @@ public class PhraseController {
         return phraseService.getAllPhrases();
     }
 
+
     @GetMapping("/{id}")
     public Phrase getPhraseById(@PathVariable Long id) {
         return phraseService.getPhraseById(id)
-                .orElseThrow(() -> new RuntimeException("Phrase not found with id: " + id));
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Phrase not found with id: " + id));
     }
 
     @PostMapping
@@ -33,11 +38,17 @@ public class PhraseController {
 
     @PutMapping("/{id}")
     public Phrase updatePhrase(@PathVariable Long id, @RequestBody Phrase updatedPhrase) {
-        return phraseService.updatePhrase(id, updatedPhrase);
+        return phraseService.updatePhrase(id, updatedPhrase)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Phrase not found with id: " + id + " for update."));
     }
 
     @DeleteMapping("/{id}")
     public void deletePhrase(@PathVariable Long id) {
+        if (!phraseService.getPhraseById(id).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Phrase not found with id: " + id + " for deletion.");
+        }
         phraseService.deletePhrase(id);
     }
 }

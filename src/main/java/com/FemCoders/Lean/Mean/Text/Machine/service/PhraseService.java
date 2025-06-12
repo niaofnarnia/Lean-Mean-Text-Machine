@@ -9,6 +9,6 @@ public interface PhraseService {
     List<Phrase> getAllPhrases();
     Optional<Phrase> getPhraseById(Long id);
     Phrase savePhrase(Phrase phrase);
-    Phrase updatePhrase(Long id, Phrase phrase);
+    Optional<Phrase> updatePhrase(Long id, Phrase phrase);
     void deletePhrase(Long id);
 }

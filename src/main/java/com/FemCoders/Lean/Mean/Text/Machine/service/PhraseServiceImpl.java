@@ -32,12 +32,12 @@ public class PhraseServiceImpl implements PhraseService {
     }
 
     @Override
-    public Phrase updatePhrase(Long id, Phrase updatedPhrase) {
+    public Optional<Phrase> updatePhrase(Long id, Phrase updatedPhrase) {
         return phraseRepository.findById(id).map(existingPhrase -> {
             existingPhrase.setText(updatedPhrase.getText());
             existingPhrase.setAuthor(updatedPhrase.getAuthor());
             return phraseRepository.save(existingPhrase);
-        }).orElseThrow(() -> new RuntimeException("Phrase not found with id: " + id));
+        });
     }
 
     @Override
