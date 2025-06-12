@@ -2,7 +2,6 @@ package com.FemCoders.Lean.Mean.Text.Machine.Controller;
 
 import com.FemCoders.Lean.Mean.Text.Machine.Model.Phrase;
 import com.FemCoders.Lean.Mean.Text.Machine.service.PhraseService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -12,7 +11,6 @@ public class PhraseController {
 
     private final PhraseService phraseService;
 
-    @Autowired
     public PhraseController(PhraseService phraseService) {
         this.phraseService = phraseService;
     }

@@ -2,7 +2,6 @@ package com.FemCoders.Lean.Mean.Text.Machine.service;
 
 import com.FemCoders.Lean.Mean.Text.Machine.Model.Phrase;
 import com.FemCoders.Lean.Mean.Text.Machine.Repository.PhraseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,6 @@ public class PhraseServiceImpl implements PhraseService {
 
     private final PhraseRepository phraseRepository;
 
-    @Autowired
     public PhraseServiceImpl(PhraseRepository phraseRepository) {
         this.phraseRepository = phraseRepository;
     }
