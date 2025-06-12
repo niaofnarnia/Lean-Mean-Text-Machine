@@ -1,13 +1,9 @@
 package com.FemCoders.Lean.Mean.Text.Machine.Controller;
 
 import com.FemCoders.Lean.Mean.Text.Machine.Model.Phrase;
-import com.FemCoders.Lean.Mean.Text.Machine.Repository.PhraseRepository;
 import com.FemCoders.Lean.Mean.Text.Machine.service.PhraseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 
 @RestController
