@@ -21,8 +21,6 @@ public class Phrase {
         this.author = author;
     }
 
-    // Getters and setters
-
     public Long getId() {
         return id;
     }
